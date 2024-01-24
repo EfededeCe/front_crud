@@ -1,5 +1,6 @@
 .env
 nt.txt
+t.txt
 # Logs
 logs
 *.log
