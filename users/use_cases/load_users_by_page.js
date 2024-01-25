@@ -12,7 +12,7 @@ export const loadUsersByPage = async ( page = 1 ) => {
   const data = (await res.json()).data;
   // En la librería, JSO-server trae los últimos 10 siempre que el Nro de la pag. sea
   // el último disponible o mayor
-  if ( page < 1 || page > 5  ) return [];
+  if ( page < 1 ) return [];
     const users = data.map( userLike => localhostUserToModel( userLike ) );
 
   return users;
