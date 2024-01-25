@@ -1,5 +1,5 @@
-import usersStore from "../../../store/users_store";
-import { renderTable } from "../render_table";
+import usersStore from "../../store/users_store";
+import { renderTable } from "../render_table/render_table";
 import './render_buttons.css';
 
 /**
@@ -20,12 +20,16 @@ export const renderButtons = ( element ) => {
   element.append( prevButton, currentPageLabel, nextButton );
 
   nextButton.addEventListener('click', async () => {
-    await usersStore.loadNextPage();
+    const next = await usersStore.loadNextPage();
+    console.log(next);
+    if (next)
+      currentPageLabel.innerText = usersStore.getCurrentPage();
     renderTable()
   })
 
   prevButton.addEventListener('click', async () => {
     await usersStore.loadPreviousPage();
+    currentPageLabel.innerText = usersStore.getCurrentPage();
     renderTable();
   })
 
